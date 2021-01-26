@@ -1,0 +1,5 @@
+<!--components/singer/singer.wxml-->
+<view class="singer-container">
+  <image src="{{singer.picUrl}}"  class="singer-img"></image>
+  <view class="singert-name">{{singer.name}}</view>
+</view>

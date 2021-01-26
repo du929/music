@@ -5,3 +5,10 @@
     <my-card></my-card>
   </block>
 </view>
+
+<text class="title">歌手</text>
+<view class="singer-container">
+  <block wx:for="{{singer}}" wx:key="id">
+    <d-singer singer="{{item}}"></d-singer>
+  </block>
+</view>

@@ -1,0 +1,21 @@
+/* components/singer/singer.wxss */
+.singer-container{
+  width: 220rpx;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+.singer-img{
+  width: 100%;
+  height: 220rpx;
+  border-radius: 10rpx;
+}
+.singer-name{
+  font-size: 26rpx;
+  line-height: 1.2;
+  padding: 4rpx 0 0 12rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }

@@ -1,1 +1,16 @@
 /* pages/find/find.wxss */
+.title{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+.singer-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+.scroll-d{
+  white-space: nowrap;
+  display: flex;
+}

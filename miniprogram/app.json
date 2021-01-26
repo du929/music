@@ -22,19 +22,19 @@
         "pagePath": "pages/music/music",
         "text": "音乐",
         "iconPath": "images/tab/music.png",
-        "selectedIconPath": "images/tab/music-actived.png"
+        "selectedIconPath": "images/tab/music-active.png"
       },
       {
         "pagePath": "pages/find/find",
         "text": "发现",
         "iconPath": "images/tab/find.png",
-        "selectedIconPath": "images/tab/find-actived.png"
+        "selectedIconPath": "images/tab/find-active.png"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",
         "iconPath": "images/tab/profile.png",
-        "selectedIconPath": "images/tab/profile-actived.png"
+        "selectedIconPath": "images/tab/profile-active.png"
       } 
     ] 
   },
