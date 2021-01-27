@@ -1,4 +1,6 @@
 // pages/music/music.js
+const MAX_LIMIT = 15
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -31,44 +33,44 @@ Page({
         url:'http://p1.music.126.net/zUv2mRobckK7Tdn2bp9iSA==/109951165664840470.jpg?imageView&quality=89'
        }
     ],
-    playlist:[
-      {
-        "id":"1001",
-        "playCount":"1562万",
-        "name":"你一定要在自己热爱的世界里闪闪发亮啊",
-        "picUrl":"http://p1.music.126.net/uesfHcJmZ23S3er_1mpeaw==/109951165621856219.jpg?param=140y140"
-      },
-      {
-        "id":"1002",
-        "playCount":"45万",
-        "name":"你好，20代！-徐紫茵：满怀好奇，在青春中勇往直前",
-        "picUrl":"http://p1.music.126.net/WWQZ7Wke45zLoYDDYXvuRQ==/109951165649211399.jpg?param=140y140"
-      },
-      {
-        "id":"1003",
-        "playCount":"3345",
-        "name":"喜欢就是要直接见面",
-        "picUrl":"http://p1.music.126.net/jgbv1xL9HV-dYFw1-toPPQ==/109951165666973407.jpg?param=140y140"
-      },
-      {
-        "id":"1004",
-        "playCount":"9842",
-        "name":"【翻/原】温柔不是我说 而是你觉得.",
-        "picUrl":"http://p1.music.126.net/PJylNWy_2-jI7LRgQ2Cm6w==/109951165649129522.jpg?param=140y140"
-      },
-      {
-        "id":"1005",
-        "playCount":"5545万",
-        "name":"我试着把孤独藏进耳机",
-        "picUrl":"http://p1.music.126.net/Xvo6PwBcdOA69ipcpV9YYg==/109951165463253777.jpg?param=140y140"
-      },
-      {
-        "id":"1006",
-        "playCount":"2210",
-        "name":"2021·心里装着鲜花银河星光和我爱的人",
-        "picUrl":"http://p1.music.126.net/O8LkkfC7PtV7TA4UP693XA==/109951164569667332.jpg?param=140y140"
-      }
-    ]
+    playlist:[]
+     // {
+     //   "id":"1001",
+     //   "playCount":"1562万",
+     //   "name":"你一定要在自己热爱的世界里闪闪发亮啊",
+     //   "picUrl":"http://p1.music.126.net/uesfHcJmZ23S3er_1mpeaw==/109951165621856219.jpg?param=140y140"
+     // },
+     // {
+     //   "id":"1002",
+     //   "playCount":"45万",
+     //   "name":"你好，20代！-徐紫茵：满怀好奇，在青春中勇往直前",
+     //   "picUrl":"http://p1.music.126.net/WWQZ7Wke45zLoYDDYXvuRQ==/109951165649211399.jpg?param=140y140"
+     // },
+      //{
+      //  "id":"1003",
+     //   "playCount":"3345",
+     //   "name":"喜欢就是要直接见面",
+     //   "picUrl":"http://p1.music.126.net/jgbv1xL9HV-dYFw1-toPPQ==/109951165666973407.jpg?param=140y140"
+     // },
+     // {
+     //   "id":"1004",
+     //   "playCount":"9842",
+     //   "name":"【翻/原】温柔不是我说 而是你觉得.",
+     //   "picUrl":"http://p1.music.126.net/PJylNWy_2-jI7LRgQ2Cm6w==/109951165649129522.jpg?param=140y140"
+     // },
+     // {
+     //   "id":"1005",
+     //   "playCount":1.688491e+6,
+     //   "name":"我试着把孤独藏进耳机",
+     //   "picUrl":"http://p1.music.126.net/Xvo6PwBcdOA69ipcpV9YYg==/109951165463253777.jpg?param=140y140"
+     // },
+    //{
+     //   "id":"1006",
+     //   "playCount":"2210",
+     //   "name":"2021·心里装着鲜花银河星光和我爱的人",
+     //   "picUrl":"http://p1.music.126.net/O8LkkfC7PtV7TA4UP693XA==/109951164569667332.jpg?param=140y140"
+     // }
+    
 
   },
 
@@ -77,7 +79,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getPlaylist()
   },
 
   /**
@@ -127,5 +129,20 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  _getPlaylist(){
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name:'playlist'
+    }).then((res) => {
+      console.log(res)
+      this.setData({
+        playlist: res.result
+      })
+      wx.hideLoading()
+    })
+  },
 })

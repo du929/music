@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "my-card":"/components/card/card",
-    "d-singer":"/components/singer/singer"
+    "my-card":"/components/card/card"
+  
   },
 
   "navigationBarTitleText":"发现" 
