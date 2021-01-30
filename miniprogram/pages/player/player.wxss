@@ -47,8 +47,12 @@
   background:url('https://du929.oss-cn-hangzhou.aliyuncs.com/img/disc.png') no-repeat center/contain;
   transform:rotate(-15deg);
   transform-origin:24rpx 10rpx;
+  transition:transform 0.8s ease;
 }
 
+.playing.player-desc::after{
+  transform: rotate(0deg);
+}
 .player-img{
   width: 368rpx;
   height: 368rpx;
@@ -60,6 +64,21 @@
   margin-left: -184rpx;
 
 }
+
+.zhuan{
+  animation:disc 12s linear infinite;
+}
+@keyframes disc{
+  from{
+   transform: rotate(0deg);
+  }to{
+   transform: rotate(360deg);
+  }
+}
+.ting{
+  animation-play-state: paused;
+}
+
 .control{
   position: absolute;
   bottom: 8%;
@@ -77,7 +96,8 @@
   font-size: 80rpx;
 }
 
-.icon-bofang1, .icon-zanting1{
+.icon-bofang1, .icon-zanting{
   font-size:120rpx;
   margin:0 50rpx;
 }
+
