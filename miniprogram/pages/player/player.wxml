@@ -8,6 +8,10 @@
       <image class="player-img zhuan{{isPlaying?'':'ting'}}"   src="{{picUrl}}"></image>
    </view>
 
+<view class="progress-bar">
+<x-progress-bar bind:musicEnd="onNext"/>
+</view>
+
 <view class="=control">
    <text class="iconfont icon-shangyishou" bing:tap="onPrev"></text>
    <text class="iconfont {{isPlaying? 'icon-zanting':'icon-bofang1'}}" bind:tap ="togglePlaying"></text>
