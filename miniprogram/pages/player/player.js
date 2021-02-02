@@ -9,7 +9,10 @@ Page({
    */
   data: {
    picUrl:'',
-   isPlaying : false
+   isPlaying : false,
+   name:'',
+   isLyricShow:false,
+   lyric:'传给组件的歌词',
   },
 
   /**
@@ -63,6 +66,23 @@ Page({
     })
   })
   wx.hideLoading()
+  wx.cloud.callFunction({
+    name:'music',
+    data:{
+      musicId,
+      $url:'lyric',
+    }
+  }).then((res)=> {
+    console.log(res)
+    let lyric = '暂无歌词'
+    const lrc=res.result.lrc
+    if(lrc){
+      lyric = lrc.lyric
+    }
+    this.setData({
+      lyric
+    })
+  })
 },
 togglePlaying(){
   if(this.data.isPlaying){
@@ -72,6 +92,11 @@ togglePlaying(){
   }
   this.setData({
     isPlaying : !this.data.isPlaying
+  })
+},
+onLyricShow(){
+  this.setData({
+    isLyricShow: !this.data.isLyricShow
   })
 },
 onPrev(){
